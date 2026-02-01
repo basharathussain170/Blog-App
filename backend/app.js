@@ -12,7 +12,7 @@ import { errorHandler } from "./middlewares/errorHandler.middleware.js";
 
 import blogRoutes from "./routes/blog.route.js";
 import userRoutes from "./routes/user.route.js";
-import { dataSeeding } from "./seed/dataSeeding.js";
+// import { dataSeeding } from "./seed/dataSeeding.js";
 
 connectDB();
 
@@ -29,9 +29,9 @@ app.use(cors({
 
 
 
-if(process.argv[2]=="admin"){
-  dataSeeding();
-}
+// if(process.argv[2]=="admin"){
+//   dataSeeding();
+// }
 
 //! api versioning --> version
 app.use("/api/v1/users",userRoutes);

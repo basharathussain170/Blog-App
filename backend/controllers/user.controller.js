@@ -36,7 +36,7 @@ export const login = asyncHandler(async (req, res, next) => {
     httpOnly: true, // JS cannot read it → more secure
     secure: process.env.NODE_ENV === "production", // true on production (HTTPS)
     sameSite: "None", // cross-site cookies allowed
-    maxAge: 2*60 * 60 * 1000, // 1 hour
+    maxAge: 2*60 * 60 * 1000, // 2 hour
   });
 
   //? res.cookie("tokenName", "value", {options}); this will send cookies to the client's browser
@@ -58,10 +58,10 @@ export const getCurrentUser = asyncHandler(async (req, res, next) => {
 });
 
 export const logout = asyncHandler(async (req, res, next) => {
-  res.clearCookie("token", {
+   res.clearCookie("token", {
     httpOnly: true,
-    secure: true,
-    sameSite: "none",
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "None",
   });
 
   res.status(200).json({

@@ -51,6 +51,13 @@ function AddBlog() {
     formData.append("tags", tags);
     formData.append("image", image);
 
+    // Validate tags for extra commas
+    const cleanTags = tags.trim();
+    if (!cleanTags || /^,|,,|,$/.test(cleanTags)) {
+      setError("Please remove extra commas in tags.");
+      return;
+    }
+
     try {
       setLoader(true);
       const response = await axios.post(`${Server_URL}/blogs/add`, formData, {
@@ -149,7 +156,7 @@ function AddBlog() {
                   required
                   className="w-full bg-transparent outline-none text-gray-700 cursor-pointer"
                 >
-                  <option value="" >Select category</option>
+                  <option value="">Select category</option>
                   {categories.map((cat) => (
                     <option key={cat} value={cat}>
                       {cat.charAt(0).toUpperCase() + cat.slice(1)}

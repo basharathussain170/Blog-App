@@ -33,17 +33,12 @@ export const login = asyncHandler(async (req, res, next) => {
   let token = generateJwtToken(existingUser.name);
 
   res.cookie("token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "strict",
+    httpOnly: true, // JS cannot read it → more secure
+    secure: process.env.NODE_ENV === "production", // true on production (HTTPS)
+    sameSite: "None", // cross-site cookies allowed
+    maxAge: 2*60 * 60 * 1000, // 1 hour
   });
 
-  res.cookie("token", token, {
-    maxAge: 60 * 60 * 1000, // 10 mins (in ms) , this sets an expiry for the token on the browser
-    secure: true,
-    httpOnly: true, // if set to true, this cannot be accessed in the browser (using js)
-    sameSite: "none",
-  });
   //? res.cookie("tokenName", "value", {options}); this will send cookies to the client's browser
 
   res.status(200).json({
@@ -74,9 +69,6 @@ export const logout = asyncHandler(async (req, res, next) => {
     message: "User logged out",
   });
 });
-
-
-
 
 //these route will be used later by admin
 
@@ -175,5 +167,3 @@ export const getProfile = asyncHandler(async (req, res, next) => {
     data: req.myUser,
   });
 });
-
-

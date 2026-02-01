@@ -1,0 +1,39 @@
+/* Colorful and stylish scrollbar for main content only */
+.main-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #60a5fa #dbeafe;
+}
+.main-scrollbar::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.main-scrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #60a5fa 0%, #f472b6 50%, #34d399 100%);
+  border-radius: 12px;
+  border: 2px solid #fff;
+}
+.main-scrollbar::-webkit-scrollbar-track {
+  background: linear-gradient(90deg, #dbeafe 0%, #fce7f3 100%);
+  border-radius: 12px;
+}
+body {
+  overflow-x: hidden;
+}
+@import "tailwindcss";
+
+/* Stylish scrollbar for Blog list */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+.scrollbar-thumb-blue-400::-webkit-scrollbar-thumb {
+  background-color: #60a5fa;
+  border-radius: 8px;
+}
+.scrollbar-track-blue-100::-webkit-scrollbar-track {
+  background-color: #dbeafe;
+  border-radius: 8px;
+}
+.scrollbar-thin::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}

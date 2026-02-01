@@ -12,7 +12,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
 import { MdKeyboardBackspace } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Server_URL } from "../main";
 import Loader from "../components/Loader";
@@ -241,12 +241,12 @@ function Signup() {
         {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
         <div className="mt-6 text-center text-sm text-gray-600">
           Already have an account?{" "}
-          <a
-            href="/signin"
+          <Link
+            to="/signin"
             className="text-blue-600 hover:underline font-medium"
           >
             Sign In
-          </a>
+          </Link>
         </div>
       </div>
     </div>

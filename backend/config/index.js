@@ -15,3 +15,4 @@ export const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 export const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
 export const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
+export const NODE_ENV = process.env.NODE_ENV;

@@ -5,7 +5,7 @@ import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 
 import { MdKeyboardBackspace } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Server_URL } from "../main";
 import useGetCurrentUser from "../hooks/useGetCurrentUser";
 import Loader from "../components/Loader";
@@ -140,12 +140,12 @@ function Signin() {
         {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
         <div className="mt-6 text-center text-sm text-gray-600">
           Don't have an account?{" "}
-          <a
-            href="/signup"
+          <Link
+            to="/signup"
             className="text-blue-600 hover:underline font-medium"
           >
             Sign Up
-          </a>
+          </Link>
         </div>
       </div>
     </div>

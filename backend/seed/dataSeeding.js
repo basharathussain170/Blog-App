@@ -1,6 +1,6 @@
 import asyncHandler from "express-async-handler";
-import UserModel from "../models/user.model.js";
-import { ADMIN_EMAIL, ADMIN_PASSWORD } from "../config/index.js";
+import UserModel from "../models/User.model.js";
+// import { ADMIN_EMAIL, ADMIN_PASSWORD } from "../config/index.js";
 
 export const dataSeeding = asyncHandler(async () => {
   const admin = await UserModel.findOne({ email: ADMIN_EMAIL });

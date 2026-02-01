@@ -79,7 +79,7 @@ function App() {
         />
         <Route
           path="/blogs"
-          element={userData ? <Blogs /> : <Navigate to={"/signin"} />}
+          element={userData ? <Blogs /> : <Navigate to={"/signup"} />}
         />
         <Route
           path="/get-blog/:id"

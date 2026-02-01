@@ -66,6 +66,17 @@ function Signup() {
             className=" text-red-500 cursor-pointer transition-all duration-300 ease-in-out hover:scale-125 hover:text-red-700 active:scale-110 drop-shadow-md hover:drop-shadow-lg "
           />
         </div>
+        <div className="flex items-start bg-linear-to-r from-yellow-200 via-yellow-100 to-yellow-50 mt-4 p-4 mb-4 rounded-xl shadow-lg border-l-4 border-yellow-500 transition transform hover:scale-105 hover:shadow-2xl">
+          <FaUserTag className="text-yellow-600 mr-3 mt-1 text-2xl" />
+          <p className="font-medium text-yellow-900 text-sm md:text-base">
+            Want to write your own blogs? Choose{" "}
+            <span className="font-extrabold text-yellow-800 bg-yellow-300 px-2 rounded-lg animate-pulse shadow-sm">
+              Author
+            </span>{" "}
+            as your role now!
+          </p>
+        </div>
+
         <div className="flex flex-col items-center mb-6">
           <FaUserPlus className="text-4xl text-blue-600 mb-2" />
           <h2 className="text-2xl font-bold text-gray-800">Sign Up</h2>
@@ -143,7 +154,7 @@ function Signup() {
                   className="ml-2 text-xs text-blue-500 hover:underline focus:outline-none cursor-pointer"
                 >
                   {showPassword ? (
-                    <FaEye className="text-red-600" size={20}/>
+                    <FaEye className="text-red-600" size={20} />
                   ) : (
                     <FaEyeSlash className="text-green-600" size={20} />
                   )}

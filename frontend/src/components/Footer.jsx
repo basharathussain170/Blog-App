@@ -49,7 +49,7 @@ function Footer() {
             Crafted with <span className="text-red-500 animate-pulse">❤️</span> by{" "}
             <span className="font-bold bg-clip-text text-transparent 
               bg-linear-to-r from-blue-600 via-purple-600 to-pink-600">
-              Basharat Hussain
+              Basharat
             </span>
           </span>
         </div>

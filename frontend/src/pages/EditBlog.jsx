@@ -28,7 +28,7 @@ const categories = [
 function EditBlog() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const [loader, setLoader] = useState(false);
   const [descriptionLoader, setDescriptionLoader] = useState(false);
   const [title, setTitle] = useState("");
@@ -64,9 +64,8 @@ function EditBlog() {
       alert("Blog edited successfully!");
       setLoader(false);
 
-      console.log("updated blog:",response?.data?.blog);
+      console.log("updated blog:", response?.data?.blog);
       dispatch(updateAuthorBlog(response?.data?.blog));
-
 
       navigate("/");
     } catch (error) {
@@ -111,8 +110,12 @@ function EditBlog() {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
+        const token = localStorage.getItem("token");
         const response = await axios.get(`${Server_URL}/blogs/single/${id}`, {
-          withCredentials: true,
+          // withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         });
         const blog = response?.data?.payload;
         setTitle(blog?.title);

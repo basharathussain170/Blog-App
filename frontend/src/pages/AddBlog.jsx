@@ -59,9 +59,13 @@ function AddBlog() {
     }
 
     try {
+      const token = localStorage.getItem("token");
       setLoader(true);
       const response = await axios.post(`${Server_URL}/blogs/add`, formData, {
-        withCredentials: true,
+        // withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       dispatch(addNewBlog(response?.data?.payload));
 

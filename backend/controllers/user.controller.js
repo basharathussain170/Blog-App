@@ -26,18 +26,18 @@ export const login = asyncHandler(async (req, res, next) => {
   let existingUser = await UserModel.findOne({ email });
   if (!existingUser) throw new ErrorResponse("Invalid Credentials", 404);
 
-  // let isMatched = await bcryptjs.compare(password, existingUser.password);
   let isMatched = await existingUser.comparePassword(password);
   if (!isMatched) return next(new ErrorResponse("Invalid credentials", 400));
 
-  let token = generateJwtToken(existingUser.name);
 
-  res.cookie("token", token, {
-    httpOnly: true, // JS cannot read it → more secure
-    secure: process.env.NODE_ENV === "production", // true on production (HTTPS)
-    sameSite: "None", // cross-site cookies allowed
-    maxAge: 2*60 * 60 * 1000, // 2 hour
-  });
+  let token = generateJwtToken(existingUser._id);
+
+  // res.cookie("token", token, {
+  //   httpOnly: true, // JS cannot read it → more secure
+  //   secure: process.env.NODE_ENV === "production", // true on production (HTTPS)
+  //   sameSite: "None", // cross-site cookies allowed
+  //   maxAge: 2*60 * 60 * 1000, // 2 hour
+  // });
 
   //? res.cookie("tokenName", "value", {options}); this will send cookies to the client's browser
 
@@ -58,11 +58,11 @@ export const getCurrentUser = asyncHandler(async (req, res, next) => {
 });
 
 export const logout = asyncHandler(async (req, res, next) => {
-   res.clearCookie("token", {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "None",
-  });
+  //  res.clearCookie("token", {
+  //   httpOnly: true,
+  //   secure: process.env.NODE_ENV === "production",
+  //   sameSite: "None",
+  // });
 
   res.status(200).json({
     success: true,

@@ -17,12 +17,12 @@ import DetailBlog from "./pages/DetailBlog";
 
 // Layout with Nav always visible
 
-
 function MainLayout() {
   return (
-    <div className="pt-16 min-h-screen flex flex-col overflow-y-auto main-scrollbar 
-      bg-linear-to-br from-blue-50 via-pink-50 to-green-50">
-      
+    <div
+      className="pt-16 min-h-screen flex flex-col overflow-y-auto main-scrollbar 
+      bg-linear-to-br from-blue-50 via-pink-50 to-green-50"
+    >
       <Nav />
 
       {/* Page Content */}
@@ -34,8 +34,6 @@ function MainLayout() {
     </div>
   );
 }
-
-
 
 function App() {
   const getCurrentUser = useGetCurrentUser();
@@ -65,10 +63,12 @@ function App() {
       />
       <Route element={<MainLayout />}>
         <Route path="/" element={<Home />} />
+        <Route path="/get-blog/:id" element={<DetailBlog />} />
         <Route
           path="/add-blog"
           element={userData ? <AddBlog /> : <Navigate to={"/signin"} />}
         />
+        <Route path="/blogs" element={<Blogs />} />
         <Route
           path="/edit-blog/:id"
           element={userData ? <EditBlog /> : <Navigate to={"/signin"} />}
@@ -76,14 +76,6 @@ function App() {
         <Route
           path="/total-blogs"
           element={userData ? <OwnerBlogs /> : <Navigate to={"/signin"} />}
-        />
-        <Route
-          path="/blogs"
-          element={userData ? <Blogs /> : <Navigate to={"/signup"} />}
-        />
-        <Route
-          path="/get-blog/:id"
-          element={userData ? <DetailBlog /> : <Navigate to={"/signup"} />}
         />
       </Route>
     </Routes>

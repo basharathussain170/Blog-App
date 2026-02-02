@@ -1,4 +1,3 @@
-
 import { useDispatch } from "react-redux";
 import { Server_URL } from "../main";
 import axios from "axios";
@@ -9,8 +8,12 @@ function useGetCurrentUser() {
 
   const getCurrentUser = async () => {
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.get(`${Server_URL}/users/current-user`, {
-        withCredentials: true,
+        // withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       dispatch(setUserData(response?.data?.payload));
     } catch (err) {

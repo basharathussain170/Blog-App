@@ -7,8 +7,12 @@ function useGetAuthorBlogs() {
   const dispatch = useDispatch();
   const authorBlogs = async () => {
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.get(`${Server_URL}/blogs/author-blogs`, {
-        withCredentials: true,
+        // withCredentials: true,
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       });
       dispatch(setAuthorBlogs(response?.data?.payload));
     } catch (error) {

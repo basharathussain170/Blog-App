@@ -4,12 +4,21 @@ import { useDispatch } from "react-redux";
 import { setAllBlogs } from "../redux/userSlice";
 
 function useGetAllBlogs() {
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const getAllBlogs = async () => {
     try {
-      const response = await axios.get(`${Server_URL}/blogs/all`, {
-        withCredentials: true,
-      });
+      const token = localStorage.getItem("token");
+      const response = await axios.get(
+        `${Server_URL}/blogs/all`,
+        // {
+        //   withCredentials: true,
+        // },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
       dispatch(setAllBlogs(response?.data?.payload));
     } catch (error) {
       console.log("error while geting blogs", error);

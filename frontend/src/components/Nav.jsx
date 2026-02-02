@@ -23,11 +23,18 @@ function Nav() {
 
   const handleLogout = async () => {
     try {
+      const token = localStorage.getItem("token");
       const response = await axios.post(
         `${Server_URL}/users/logout`,
         {},
-        { withCredentials: true },
+        {
+          // withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
+      localStorage.removeItem("token");
       dispatch(setUserData(null));
       navigate("/signin");
     } catch (error) {

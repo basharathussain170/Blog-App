@@ -24,11 +24,15 @@ function OwnerCard({
 
   const handleDelete = async () => {
     try {
+      const token = localStorage.getItem("token");
       setLoader(true);
       const response = await axios.delete(
         `${Server_URL}/blogs/delete-blog/${_id}`,
         {
-          withCredentials: true,
+          // withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
       );
       dispatch(removeAuthorBlog(_id));

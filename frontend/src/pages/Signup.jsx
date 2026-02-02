@@ -46,7 +46,7 @@ function Signup() {
           age: Number(age),
           isMarried,
         },
-        { withCredentials: true },
+        // { withCredentials: true },
       );
 
       setLoader(false);

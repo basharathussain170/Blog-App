@@ -30,9 +30,12 @@ function Signin() {
           email,
           password,
         },
-        { withCredentials: true },
+        // { withCredentials: true },
       );
-      console.log("Signin successful:", response.data);
+      console.log("Signin successful:", response?.data);
+      // it when user use phone and do not allow thirdparty cookie
+      localStorage.setItem("token",response?.data?.token)
+
       await getCurrentUser();
       setLoader(false);
       navigate("/");

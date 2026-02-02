@@ -79,6 +79,7 @@ function AddBlog() {
 
   const generateDescription = async () => {
     try {
+      const token=localStorage.getItem("token")
       if (!title) {
         alert("Please enter a title to generate description");
         return;
@@ -87,7 +88,12 @@ function AddBlog() {
       const response = await axios.post(
         `${Server_URL}/blogs/generate-description`,
         { title },
-        { withCredentials: true },
+        { 
+          // withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+         },
       );
       const aiText =
         response?.data?.description?.candidates[0]?.content.parts[0]?.text;

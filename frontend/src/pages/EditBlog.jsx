@@ -52,12 +52,16 @@ function EditBlog() {
     }
 
     try {
+      const token=localStorage.getItem("token")
       setLoader(true);
       const response = await axios.patch(
         `${Server_URL}/blogs/edit-blog/${id}`,
         formData,
         {
-          withCredentials: true,
+          // withCredentials: true,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         },
       );
       console.log("Blog edited successfully:", response.data);
@@ -77,6 +81,7 @@ function EditBlog() {
 
   const generateDescription = async () => {
     try {
+      const token = localStorage.getItem("token");
       if (!title) {
         alert("Please enter a title to generate description");
         return;
@@ -85,7 +90,12 @@ function EditBlog() {
       const response = await axios.post(
         `${Server_URL}/blogs/generate-description`,
         { title },
-        { withCredentials: true },
+        {
+          // withCredentials: true
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
       );
       const aiText =
         response?.data?.description?.candidates[0]?.content.parts[0]?.text;

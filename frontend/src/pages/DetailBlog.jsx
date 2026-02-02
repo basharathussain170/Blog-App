@@ -261,7 +261,8 @@ export default function DetailBlog() {
             {/* Author Card */}
             <div className="mt-10 p-5 bg-white rounded-2xl border border-blue-100 shadow-sm flex items-start gap-4">
               <img
-                src="https://i.pravatar.cc/150?img=47"
+                // src="https://i.pravatar.cc/150?img=47"
+                src="https://images.unsplash.com/photo-1544502062-f82887f03d1c?q=80&w=1259&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 alt={blog?.createdBy.name || "Author"}
                 className="w-16 h-16 rounded-full object-cover border-2 border-gradient border-blue-200 shadow-md shrink-0"
               />
